@@ -2,10 +2,8 @@ import express, { Application } from "express";
 import morgan from "morgan";
 import { Get, Route } from "tsoa";
 import sequelizeConn from "./db/sequelize";
-import { Sequelize } from "sequelize";
 
 //Routes
-import indexRoutes from "./routes/index.routes";
 import SocialRoutes from "./routes/Social.routes";
 import informacionatletaRoutes from "./routes/InformacionAtleta.routes";
 import AtletaRoute from "./routes/atleta.routes";
@@ -13,7 +11,6 @@ import CarnetRoute from "./routes/carnet.routes";
 
 import ComprobanteRoute from "./routes/Comprobantes.routes";
 import { swaggerDocs } from "./utils/swagger";
-import swaggerUi from "swagger-ui-express";
 @Route("socialclear")
 @Get("/")
 export class App {
@@ -41,7 +38,6 @@ export class App {
       });
   }
   routes() {
-    this.app.use(indexRoutes);
     this.app.use("/Socials", SocialRoutes);
     this.app.use("/informacionatleta", informacionatletaRoutes);
     this.app.use("/Atleta", AtletaRoute);

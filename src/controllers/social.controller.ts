@@ -1,8 +1,4 @@
 import { Request, Response, RequestHandler } from "express";
-import Connection from "mysql/lib/Connection";
-import { connect } from "../database";
-import { Socials } from "../interfaces/Social";
-import { Get, Route } from "tsoa";
 import { social } from "../models/social.schema";
 
 export async function getSocial(req: Request, res: Response) {
@@ -31,10 +27,10 @@ export async function createSocial(req: Request, res: Response) {
   createSocial
     .then((data) => {
       console.log(data.id);
-      res.status(200).send({ data: "Created success", idCreated: data.id });
+      res.status(200).send({ created: true, idCreated: data.id });
     })
     .catch((err) => {
-      res.status(404).send({ message: err });
+      res.status(404).send({ created: false, message: err });
     });
 }
 export async function getOneSocial(req: Request, res: Response) {
@@ -64,10 +60,10 @@ export async function deleteSocial(req: Request, res: Response) {
       { where: { Id, IdSocial: Id } }
     )
     .then(() => {
-      res.status(200).send({ data: "Deleted social" });
+      res.status(200).send({ deleted: true });
     })
     .catch((err: any) => {
-      res.status(404).send({ message: err });
+      res.status(404).send({ deleted: false, message: err });
     });
 }
 
@@ -86,7 +82,7 @@ export async function updateSocial(req: Request, res: Response) {
       { where: { id, IdSocial: id } }
     )
     .then(() => {
-      res.status(200).send({ data: "Updated social" });
+      res.status(204).send();
     })
     .catch((err: any) => {
       res.status(404).send({ message: err });

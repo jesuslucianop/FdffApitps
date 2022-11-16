@@ -1,8 +1,4 @@
 import { Request, Response, RequestHandler } from "express";
-import Connection from "mysql/lib/Connection";
-import { connect } from "../database";
-import { Socials } from "../interfaces/Social";
-import { Get, Route } from "tsoa";
 import { informacionatleta } from "../models/informacionatleta.schema";
 
 export async function createinformacionatleta(req: Request, res: Response) {
@@ -32,10 +28,10 @@ export async function createinformacionatleta(req: Request, res: Response) {
   createSocial
     .then((data) => {
       console.log(data.id);
-      res.status(200).send({ data: "Created success", idCreated: data.id });
+      res.status(200).send({ created: true, idCreated: data.id });
     })
     .catch((err) => {
-      res.status(404).send({ message: err });
+      res.status(404).send({ created: false, message: err });
     });
 }
 
@@ -123,7 +119,7 @@ export async function updateinformacionatleta(req: Request, res: Response) {
       { where: { IdInformacionAtleta: Id } }
     )
     .then(() => {
-      res.status(200).send({ data: "Updated Informacion atleta" });
+      res.status(204).send();
     })
     .catch((err: any) => {
       res.status(404).send({ message: err });

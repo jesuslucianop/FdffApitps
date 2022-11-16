@@ -1,8 +1,4 @@
 import { Request, Response, RequestHandler } from "express";
-import Connection from "mysql/lib/Connection";
-import { connect } from "../database";
-
-import { Get, Route } from "tsoa";
 import { Atleta } from "../models/atleta.schema";
 
 export async function createAtleta(req: Request, res: Response) {
@@ -26,10 +22,10 @@ export async function createAtleta(req: Request, res: Response) {
   })
     .then((data) => {
       console.log(data.id);
-      res.status(200).send({ data: "Created success", idCreated: data.id });
+      res.status(200).send({ created: true, idCreated: data.id });
     })
     .catch((err) => {
-      res.status(404).send({ message: err });
+      res.status(404).send({ created: false, message: err });
     });
 }
 
@@ -74,10 +70,10 @@ export async function deletedAtletas(req: Request, res: Response) {
     { where: { IdAtleta: Id } }
   )
     .then(() => {
-      res.status(200).send({ data: "Deleted  Atleta" });
+      res.status(200).send({ deleted: true });
     })
     .catch((err: any) => {
-      res.status(404).send({ message: err });
+      res.status(404).send({ deleted: false, message: err });
     });
 }
 
@@ -106,7 +102,7 @@ export async function updateAtletas(req: Request, res: Response) {
     { where: { IdAtleta: Id } }
   )
     .then(() => {
-      res.status(200).send({ data: "Updated Informacion atleta" });
+      res.status(204);
     })
     .catch((err: any) => {
       res.status(404).send({ message: err });

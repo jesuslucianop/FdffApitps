@@ -1,8 +1,4 @@
 import { Request, Response, RequestHandler } from "express";
-import Connection from "mysql/lib/Connection";
-import { connect } from "../database";
-import { Socials } from "../interfaces/Social";
-import { Get, Route } from "tsoa";
 import { Comprobante } from "../models/comprobante.schema";
 
 export async function createComprobante(req: Request, res: Response) {
@@ -15,10 +11,10 @@ export async function createComprobante(req: Request, res: Response) {
   await createSocial
     .then((data) => {
       console.log(data.id);
-      res.status(200).send({ data: "Created success", idCreated: data.id });
+      res.status(200).send({ created: true, idCreated: data.id });
     })
     .catch((err) => {
-      res.status(404).send({ message: err });
+      res.status(404).send({ created: false, message: err });
     });
 }
 
@@ -63,10 +59,10 @@ export async function deleteComprobante(req: Request, res: Response) {
     { where: { IdComprobante: Id } }
   )
     .then(() => {
-      res.status(200).send({ data: "Deleted Comprobante de pago" });
+      res.status(200).send({ deleted: true });
     })
     .catch((err: any) => {
-      res.status(404).send({ message: err });
+      res.status(404).send({ deleted: false, message: err });
     });
 }
 
@@ -84,7 +80,7 @@ export async function updateComprobante(req: Request, res: Response) {
     { where: { IdComprobante: Id } }
   )
     .then(() => {
-      res.status(200).send({ data: "Updated Comprobante" });
+      res.status(204).send();
     })
     .catch((err: any) => {
       res.status(404).send({ message: err });
