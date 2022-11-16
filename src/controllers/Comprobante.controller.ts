@@ -1,4 +1,8 @@
 import { Request, Response, RequestHandler } from "express";
+import Connection from "mysql/lib/Connection";
+
+import { Socials } from "../interfaces/Social";
+import { Get, Route } from "tsoa";
 import { Comprobante } from "../models/comprobante.schema";
 
 export async function createComprobante(req: Request, res: Response) {

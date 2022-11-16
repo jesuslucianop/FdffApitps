@@ -1,4 +1,7 @@
 import { Request, Response, RequestHandler } from "express";
+
+import { Socials } from "../interfaces/Social";
+import { Get, Route } from "tsoa";
 import { social } from "../models/social.schema";
 
 export async function getSocial(req: Request, res: Response) {
