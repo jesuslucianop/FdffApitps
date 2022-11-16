@@ -1,7 +1,4 @@
 import { Request, Response, RequestHandler } from "express";
-import Connection from "mysql/lib/Connection";
-import { connect } from "../database";
-
 import { Get, Route } from "tsoa";
 import { Atleta } from "../models/atleta.schema";
 

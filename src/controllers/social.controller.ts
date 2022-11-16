@@ -1,6 +1,5 @@
 import { Request, Response, RequestHandler } from "express";
-import Connection from "mysql/lib/Connection";
-import { connect } from "../database";
+
 import { Socials } from "../interfaces/Social";
 import { Get, Route } from "tsoa";
 import { social } from "../models/social.schema";

@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "migrate":"npx sequelize-cli db:migrate",
+    "rollack":"npx sequelize-cli db:migrate:undo:all",
     "start": "node build/index.js",
     "predev": "npm run swagger",
     "prebuild": "npm run swagger",
