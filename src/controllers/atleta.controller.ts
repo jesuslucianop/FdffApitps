@@ -10,6 +10,7 @@ export async function createAtleta(req: Request, res: Response) {
     CategoriaCompite,
     PesoCorporal,
     IdCarnet,
+    IdInformacionAtleta,
   } = req.body;
   const createAtleta = await Atleta.create({
     Nacionalidad: Nacionalidad,
@@ -19,6 +20,7 @@ export async function createAtleta(req: Request, res: Response) {
     CategoriaCompite: CategoriaCompite,
     PesoCorporal: PesoCorporal,
     IdCarnet: IdCarnet,
+    IdInformacionAtleta
   })
     .then((data) => {
       console.log(data.id);

@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import morgan from "morgan";
 import { Get, Route } from "tsoa";
 import sequelizeConn from "./db/sequelize";
+const cors = require('cors');
 
 //Routes
 import SocialRoutes from "./routes/Social.routes";
@@ -28,6 +29,8 @@ export class App {
   midlewares() {
     this.app.use(morgan("dev"));
     this.app.use(express.json());
+    this.app.use(cors());
+    
     sequelizeConn
       .authenticate()
       .then(() => {
