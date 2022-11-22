@@ -1,6 +1,5 @@
 import { Request, Response, RequestHandler } from "express";
 import { Socials } from "../interfaces/Social";
-import { Get, Route } from "tsoa";
 import { informacionatleta } from "../models/informacionatleta.schema";
 
 export async function createinformacionatleta(req: Request, res: Response) {

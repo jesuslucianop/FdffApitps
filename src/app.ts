@@ -1,6 +1,5 @@
 import express, { Application } from "express";
 import morgan from "morgan";
-import { Get, Route } from "tsoa";
 import sequelizeConn from "./db/sequelize";
 const cors = require('cors');
 
@@ -11,9 +10,8 @@ import AtletaRoute from "./routes/atleta.routes";
 import CarnetRoute from "./routes/carnet.routes";
 
 import ComprobanteRoute from "./routes/Comprobantes.routes";
-import { swaggerDocs } from "./utils/swagger";
-@Route("socialclear")
-@Get("/")
+
+
 export class App {
   private app: Application;
   constructor(private port?: number | string) {
@@ -21,7 +19,7 @@ export class App {
     this.setting();
     this.midlewares();
     this.routes();
-    swaggerDocs(express(), this.port);
+
   }
   setting() {
     this.app.set("port", this.port || process.env.PORT || 4000);

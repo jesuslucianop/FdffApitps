@@ -1,6 +1,5 @@
 import { Request, Response, RequestHandler } from "express";
 import { Socials } from "../interfaces/Social";
-import { Get, Route } from "tsoa";
 import { Carnet } from "../models/carnet.schema";
 
 export async function createCarnet(req: Request, res: Response) {
