@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "ifbb2022",
     "database": "fdff",
-    "host": "127.0.0.1",
+    "host": "143.244.157.164:3306",
     "dialect": "mysql"
   },
   "test": {
