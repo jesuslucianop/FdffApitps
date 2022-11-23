@@ -1,18 +1,8 @@
-FROM node:lts-alpine
-
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
+FROM node:16
+WORKDIR /app
 COPY package*.json ./
-
+RUN npm cache clean --force
 RUN npm install
-
-RUN npm run build
-
-# Bundle app source
 COPY . .
-
-EXPOSE 4000
-
-CMD [ "npm", "start" ]
+EXPOSE 8000
+CMD ["npm", "run", "dev"]
