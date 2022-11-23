@@ -3,7 +3,8 @@
     "username": "root",
     "password": "ifbb2022",
     "database": "fdff",
-    "host": "143.244.157.164:3306",
+    "host": "143.244.157.164",
+    "port":"3306",
     "dialect": "mysql"
   },
   "test": {
