@@ -8,7 +8,7 @@
         "rollback": "npx sequelize-cli db:migrate:undo:all",
         "start": "node build/index.js",
         "build": "tsc",
-        "dev": "nodemon src/index.ts --exec ts-node"
+        "dev": "npx sequelize-cli db:migrate && nodemon src/index.ts --exec ts-node"
     },
     "keywords": [],
     "author": "",
