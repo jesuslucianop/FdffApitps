@@ -3,7 +3,7 @@ import { Table, Model, Column, DataType } from "sequelize-typescript";
 @Table({
   timestamps: false,
   modelName: "carnet",
-  tableName: "carnets",
+  tableName: "Carnets",
 })
 export class Carnet extends Model {
   @Column({
