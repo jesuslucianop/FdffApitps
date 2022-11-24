@@ -16,10 +16,10 @@ export class Carnet extends Model {
   id!: number;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
     allowNull: true,
   })
-  NumeroCarnet!: string;
+  NumeroCarnet!: number;
 
   @Column({
     type: DataType.DATE,

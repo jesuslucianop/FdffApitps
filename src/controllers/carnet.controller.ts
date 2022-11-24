@@ -4,8 +4,12 @@ import { Carnet } from "../models/carnet.schema";
 
 export async function createCarnet(req: Request, res: Response) {
   const { NumeroCarnet, FechaInscripcion } = req.body;
+  const idUltimoCarnet: number = await Carnet.max("NumeroCarnet");
+  //Aqui se hace la logica de que si no existe en la base de datos el carnet 2001 que es que nos dieron para partir
+  //Lo agregamos y si existe le suma uno
+  const idInsertar = idUltimoCarnet < 2001 ? 2001 : 2001 + 1;
   const createCarnet = await Carnet.create({
-    NumeroCarnet: NumeroCarnet,
+    NumeroCarnet: idInsertar,
     FechaInscripcion: FechaInscripcion,
   })
     .then((data) => {

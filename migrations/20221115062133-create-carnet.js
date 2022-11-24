@@ -10,7 +10,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       NumeroCarnet: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+
       },
       FechaInscripcion: {
         allowNull: false,

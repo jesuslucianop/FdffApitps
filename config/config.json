@@ -1,5 +1,5 @@
 {
-  "development": {
+  "development2": {
     "username": "root",
     "password": "ifbb2022",
     "database": "fdff",
@@ -7,6 +7,15 @@
     "port":"3306",
     "dialect": "mysql"
   },
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "fdff",
+    "host": "localhost",
+    "port":"3306",
+    "dialect": "mysql"
+  },
+  
   "test": {
     "username": "root",
     "password": null,
