@@ -1,16 +1,16 @@
 import express, { Application } from "express";
 import morgan from "morgan";
 import sequelizeConn from "./db/sequelize";
-const cors = require('cors');
+const cors = require("cors");
 
 //Routes
 import SocialRoutes from "./routes/Social.routes";
 import informacionatletaRoutes from "./routes/InformacionAtleta.routes";
 import AtletaRoute from "./routes/atleta.routes";
 import CarnetRoute from "./routes/carnet.routes";
+import Report from "./routes/Report.routes";
 
 import ComprobanteRoute from "./routes/Comprobantes.routes";
-
 
 export class App {
   private app: Application;
@@ -19,7 +19,6 @@ export class App {
     this.setting();
     this.midlewares();
     this.routes();
-
   }
   setting() {
     this.app.set("port", this.port || process.env.PORT || 4000);
@@ -28,7 +27,7 @@ export class App {
     this.app.use(morgan("dev"));
     this.app.use(express.json());
     this.app.use(cors());
-    
+
     sequelizeConn
       .authenticate()
       .then(() => {
@@ -44,6 +43,7 @@ export class App {
     this.app.use("/Atleta", AtletaRoute);
     this.app.use("/Comprobante", ComprobanteRoute);
     this.app.use("/Carnet", CarnetRoute);
+    this.app.use("/Report", Report);
   }
   async listen() {
     await this.app.listen(this.app.get("port"));

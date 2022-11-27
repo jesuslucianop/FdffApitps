@@ -7,14 +7,20 @@ export async function createCarnet(req: Request, res: Response) {
   const idUltimoCarnet: number = await Carnet.max("NumeroCarnet");
   //Aqui se hace la logica de que si no existe en la base de datos el carnet 2001 que es que nos dieron para partir
   //Lo agregamos y si existe le suma uno
-  const idInsertar = idUltimoCarnet < 2001 ? 2001 : 2001 + 1;
+  const idInsertar = idUltimoCarnet < 2001 ? 2001 : idUltimoCarnet + 1;
   const createCarnet = await Carnet.create({
     NumeroCarnet: idInsertar,
     FechaInscripcion: FechaInscripcion,
   })
     .then((data) => {
       console.log(data.id);
-      res.status(200).send({ created: true, idCreated: data.id });
+      res
+        .status(200)
+        .send({
+          created: true,
+          idCreated: data.id,
+          NumeroCarnet: idUltimoCarnet + 1,
+        });
     })
     .catch((err) => {
       res.status(404).send({ created: false, message: err });

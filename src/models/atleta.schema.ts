@@ -1,5 +1,11 @@
-import { Table, Model, Column, DataType } from "sequelize-typescript";
-
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+} from "sequelize-typescript";
+import { informacionatleta } from "./informacionatleta.schema";
 @Table({
   timestamps: false,
   modelName: "Atleta",

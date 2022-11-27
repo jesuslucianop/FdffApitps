@@ -1,4 +1,27 @@
 import { Sequelize } from "sequelize-typescript";
+const Sequelize2 = require("sequelize");
+import {
+  Association,
+  HasManyAddAssociationMixin,
+  HasManyCountAssociationsMixin,
+  HasManyCreateAssociationMixin,
+  HasManyGetAssociationsMixin,
+  HasManyHasAssociationMixin,
+  HasManySetAssociationsMixin,
+  HasManyAddAssociationsMixin,
+  HasManyHasAssociationsMixin,
+  HasManyRemoveAssociationMixin,
+  HasManyRemoveAssociationsMixin,
+  Model,
+  ModelDefined,
+  Optional,
+  InferAttributes,
+  InferCreationAttributes,
+  CreationOptional,
+  NonAttribute,
+  ForeignKey,
+} from "sequelize";
+import { QueryTypes } from "sequelize";
 import { social } from "../models/social.schema";
 import { informacionatleta } from "../models/informacionatleta.schema";
 import { Atleta } from "../models/atleta.schema";
@@ -18,6 +41,7 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "",
   logging: false,
+
   models: [social, informacionatleta, Atleta, Comprobante, Carnet],
 });
 

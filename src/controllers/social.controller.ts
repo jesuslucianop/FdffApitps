@@ -2,8 +2,9 @@ import { Request, Response, RequestHandler } from "express";
 
 import { Socials } from "../interfaces/Social";
 import { social } from "../models/social.schema";
-
+import { sendEmail } from "../utils/SendgridHelper";
 export async function getSocial(req: Request, res: Response) {
+  /*
   social
     .findAll({
       where: {
@@ -15,7 +16,8 @@ export async function getSocial(req: Request, res: Response) {
     })
     .catch((err: any) => {
       res.status(404).send({ message: err });
-    });
+    });*/
+  //sendEmail(data);
 }
 export async function createSocial(req: Request, res: Response) {
   const { Facebook, Whatsapp, Twitter, Instagram } = req.body;

@@ -1,6 +1,8 @@
 import { Request, Response, RequestHandler } from "express";
 import { Socials } from "../interfaces/Social";
 import { informacionatleta } from "../models/informacionatleta.schema";
+import { Carnet } from "../models/carnet.schema";
+import { Atleta } from "../models/atleta.schema";
 
 export async function createinformacionatleta(req: Request, res: Response) {
   const {
@@ -126,3 +128,29 @@ export async function updateinformacionatleta(req: Request, res: Response) {
       res.status(404).send({ message: err });
     });
 }
+/*
+export async function getAtletasInscritos(req: Request, res: Response) {
+  const Id = req.params.IdAtleta;
+
+  await informacionatleta.findAll({
+    where: {
+      $or: [
+        {
+          "$informacionatleta.IdInformacionAtleta$":
+            "$Atleta.IdInformacionAtleta$",
+        },
+      ],
+    },
+    include: [
+      {
+        model: Atleta,
+        required: false,
+      },
+      {
+        model: Carnet,
+        required: false,
+      },
+    ],
+  });
+}
+*/
