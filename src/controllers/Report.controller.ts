@@ -11,16 +11,19 @@ import Sequelize from "sequelize";
 
 export async function getAtletasInscritos(req: Request, res: Response) {
   await SequelizeConn.query(
-    `SELECT informacionatleta.Nombres, informacionatleta.Apellidos,
-    informacionatleta.Cedula,carnets.NumeroCarnet,carnets.FechaInscripcion
-    , atleta.Nacionalidad,atleta.CategoriaCompite, comprobantes.RutaArchivoComprobant
-    FROM carnets carnets
-    INNER JOIN atleta atleta 
-    ON atleta.IdCarnet= carnets.IdCarnet
-    INNER JOIN informacionatleta informacionatleta 
-    ON informacionatleta.IdInformacionAtleta= atleta.IdInformacionAtleta
-    INNER JOIN comprobantes comprobantes 
-    ON comprobantes.IdAtleta= atleta.IdAtleta
+    `SELECT  infotleta.Nombres,
+    infotleta.Apellidos,
+    infotleta.Cedula,
+   carnets.NumeroCarnet,carnets.FechaInscripcion 
+   , atleta.Nacionalidad,atleta.CategoriaCompite,
+   c.RutaArchivoComprobant    
+   FROM Carnets carnets    
+   INNER JOIN Atleta atleta   
+   ON atleta.IdCarnet= carnets.IdCarnet    
+   INNER JOIN InformacionAtleta infotleta     
+   ON  infotleta.IdInformacionAtleta= atleta.IdInformacionAtleta    
+   INNER JOIN Comprobantes c    
+   ON c.IdAtleta= atleta.IdAtleta
     `,
     { type: Sequelize.QueryTypes.SELECT }
   )
