@@ -16,7 +16,7 @@ module.exports = {
       FechaInscripcion: {
         allowNull: false,
         type: Sequelize.DATE,
-
+        defaultValue: new Date()
       },
       Inactive: {
         type: Sequelize.BOOLEAN,

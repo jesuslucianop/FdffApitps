@@ -24,6 +24,7 @@ export class Carnet extends Model {
   @Column({
     type: DataType.DATE,
     allowNull: true,
+    defaultValue: new Date()
   })
   FechaInscripcion!: Date;
 
