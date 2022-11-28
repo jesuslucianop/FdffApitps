@@ -9,9 +9,9 @@
   },
   "development": {
     "username": "root",
-    "password": "",
+    "password": "ifbb2022",
     "database": "fdff",
-    "host": "localhost",
+    "host": "143.244.157.164",
     "port":"3306",
     "dialect": "mysql"
   },
