@@ -22,7 +22,7 @@ export class Comprobante extends Model {
   IdAtleta!: number;
 
   @Column({
-    type: DataType.TEXT,
+    type: DataType.TEXT("long"),
     allowNull: true,
   })
   RutaArchivoComprobant!: string;

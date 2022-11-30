@@ -25,8 +25,10 @@ export class App {
   }
   midlewares() {
     this.app.use(morgan("dev"));
-    this.app.use(express.json());
+    // this.app.use(express.json());
     this.app.use(cors());
+    var bodyParser = require("body-parser");
+    this.app.use(bodyParser.json({ limit: "50mb" }));
 
     sequelizeConn
       .authenticate()
